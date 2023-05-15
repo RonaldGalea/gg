@@ -128,7 +128,8 @@ size_t AWSLambdaExecutionEngine::job_count() const
 
 bool AWSLambdaExecutionEngine::can_execute( const gg::thunk::Thunk & thunk ) const
 {
-  return thunk.infiles_size() < 230_MiB;
+  // Lambda now supports larger /tmp scratch space -> increased limit
+  return thunk.infiles_size() < 2300_MiB;
 }
 
 float AWSLambdaExecutionEngine::compute_cost( const chrono::steady_clock::time_point & begin,

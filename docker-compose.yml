@@ -1,13 +1,14 @@
 version: '3.4'
 services:
-  gg: &gg
+  gg:
+    &gg
     image: gg:0.0.1-development
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-      target: sandbox-env
+      target: build-env
       args:
-        UBUNTU_VERSION: '18.04'
+        UBUNTU_VERSION: '20.04'
     volumes:
       - .:/app/gg:cached
       - ~/.ssh:/root/.ssh:ro
